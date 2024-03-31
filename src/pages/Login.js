@@ -12,14 +12,11 @@ const Login = () => {
 
   function emailHandleChange(event) {
     const inputValue = event.target.value;
-    console.log("Input value:", inputValue);
     setEmailInput(inputValue);
     if (inputValue === "Shoogi") {
       setIsValidEmail(true);
-      console.log("Email set to true");
     } else {
       setIsValidEmail(false);
-      console.log("Email set to false");
     }
   }
 
@@ -33,8 +30,7 @@ const Login = () => {
     }
   }
 
-  function successLogin(event) {
-    event.preventDefault(); // Prevent form submission
+  function successLogin() {
     if (isValidEmail && isValidPassword) {
       navigate(CONSTANTS.ROUTE_HOME);
     } else {
@@ -44,7 +40,6 @@ const Login = () => {
 
   function handleKeyDown(event) {
     if (event.key === "Enter") {
-      event.preventDefault(); // Prevent form submission
       successLogin();
     }
   }
@@ -69,7 +64,7 @@ const Login = () => {
               </button>
             </form>
             <div className="social-login">
-              <h3>log in Shoogi's website</h3>
+              <h3>log in to Shoogi's website</h3>
               <div className="social-icons">
                 <a href="#" className="social-login__icon fab fa-instagram"></a>
                 <a href="#" className="social-login__icon fab fa-facebook"></a>
