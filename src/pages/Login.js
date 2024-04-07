@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Pages-css/Login.css";
 import { CONSTANTS } from "../constans";
+import Modal from "../components/Modal/Modal";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ const Login = () => {
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [passwordInput, setPasswordInput] = useState("");
   const [isValidPassword, setisValidPassword] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   function emailHandleChange(event) {
     const inputValue = event.target.value;
@@ -35,6 +37,7 @@ const Login = () => {
       navigate(CONSTANTS.ROUTE_HOME);
     } else {
       console.log("wrong");
+      setShowModal(true);
     }
   }
 
@@ -46,6 +49,7 @@ const Login = () => {
 
   return (
     <div className="login-body">
+      {!isValidEmail && !isValidPassword && <Modal showModal={showModal} />}
       <div className="container">
         <div className="screen">
           <div className="screen__content">
